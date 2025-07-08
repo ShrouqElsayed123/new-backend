@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_universities",
+  "info": {
+    "singularName": "about-university",
+    "pluralName": "about-universities",
+    "displayName": "AboutUniversity"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "AboutUniversity": {
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
