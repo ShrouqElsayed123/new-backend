@@ -509,6 +509,12 @@ export interface ApiUniversityFacultiesUniversityFaculties
     };
   };
   attributes: {
+    CareerPath: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -532,6 +538,12 @@ export interface ApiUniversityFacultiesUniversityFaculties
         };
       }>;
     name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ProgramObjectives: Schema.Attribute.JSON &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
