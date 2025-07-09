@@ -492,6 +492,43 @@ export interface ApiLevelLevel extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNavbarListNavbarList extends Struct.CollectionTypeSchema {
+  collectionName: 'navbar_lists1';
+  info: {
+    displayName: 'NavbarList';
+    pluralName: 'navbar-lists1';
+    singularName: 'navbar-list';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::navbar-list.navbar-list'
+    >;
+    navbarlist: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiUniversityFacultiesUniversityFaculties
   extends Struct.CollectionTypeSchema {
   collectionName: 'university_faculties1';
@@ -1162,6 +1199,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-university.about-university': ApiAboutUniversityAboutUniversity;
       'api::level.level': ApiLevelLevel;
+      'api::navbar-list.navbar-list': ApiNavbarListNavbarList;
       'api::university-faculties.university-faculties': ApiUniversityFacultiesUniversityFaculties;
       'api::university-history.university-history': ApiUniversityHistoryUniversityHistory;
       'api::university-info.university-info': ApiUniversityInfoUniversityInfo;
