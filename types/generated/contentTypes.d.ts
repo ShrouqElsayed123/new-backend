@@ -562,6 +562,12 @@ export interface ApiUniversityFacultiesUniversityFaculties
           localized: true;
         };
       }>;
+    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     level: Schema.Attribute.Relation<'oneToOne', 'api::level.level'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
