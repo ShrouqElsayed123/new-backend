@@ -17,9 +17,9 @@
   "attributes": {
     "level_faculty": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::university-faculties.university-faculties",
-      "inversedBy": "level"
+      "inversedBy": "levels"
     },
     "level": {
       "type": "json",

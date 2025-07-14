@@ -28,9 +28,9 @@
             "relation": "oneToMany",
             "target": "api::level.level"
         },
-        "level": {
+        "levels": {
             "type": "relation",
-            "relation": "oneToOne",
+            "relation": "oneToMany",
             "target": "api::level.level",
             "mappedBy": "level_faculty"
         },
@@ -105,6 +105,12 @@
                 "videos",
                 "audios"
             ]
+        },
+        "departments": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::departments.departments",
+            "mappedBy": "university_faculty"
         }
     }
 }

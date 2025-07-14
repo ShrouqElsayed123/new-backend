@@ -448,6 +448,83 @@ export interface ApiAboutUniversityAboutUniversity
   };
 }
 
+export interface ApiDepartmentsDepartments extends Struct.CollectionTypeSchema {
+  collectionName: 'departments1';
+  info: {
+    displayName: 'Departments ';
+    pluralName: 'departments1';
+    singularName: 'departments';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    CareerPath: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::departments.departments'
+    >;
+    Mission: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Overview: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ProgramObjectives: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.UID &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    university_faculty: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::university-faculties.university-faculties'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Vision: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+  };
+}
+
 export interface ApiLevelLevel extends Struct.CollectionTypeSchema {
   collectionName: 'levels';
   info: {
@@ -474,7 +551,7 @@ export interface ApiLevelLevel extends Struct.CollectionTypeSchema {
         };
       }>;
     level_faculty: Schema.Attribute.Relation<
-      'oneToOne',
+      'manyToOne',
       'api::university-faculties.university-faculties'
     >;
     locale: Schema.Attribute.String;
@@ -555,6 +632,10 @@ export interface ApiUniversityFacultiesUniversityFaculties
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    departments: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::departments.departments'
+    >;
     Faculty_level: Schema.Attribute.Relation<'oneToMany', 'api::level.level'>;
     FacultyOverview: Schema.Attribute.JSON &
       Schema.Attribute.SetPluginOptions<{
@@ -568,7 +649,7 @@ export interface ApiUniversityFacultiesUniversityFaculties
           localized: true;
         };
       }>;
-    level: Schema.Attribute.Relation<'oneToOne', 'api::level.level'>;
+    levels: Schema.Attribute.Relation<'oneToMany', 'api::level.level'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1204,6 +1285,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about-university.about-university': ApiAboutUniversityAboutUniversity;
+      'api::departments.departments': ApiDepartmentsDepartments;
       'api::level.level': ApiLevelLevel;
       'api::navbar-list.navbar-list': ApiNavbarListNavbarList;
       'api::university-faculties.university-faculties': ApiUniversityFacultiesUniversityFaculties;
