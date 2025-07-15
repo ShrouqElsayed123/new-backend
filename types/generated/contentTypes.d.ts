@@ -525,6 +525,44 @@ export interface ApiDepartmentsDepartments extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiElectronicplatformsElectronicplatforms
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'electronicplatforms1';
+  info: {
+    displayName: 'Electronicplatforms';
+    pluralName: 'electronicplatforms1';
+    singularName: 'electronicplatforms';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    data: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::electronicplatforms.electronicplatforms'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLevelLevel extends Struct.CollectionTypeSchema {
   collectionName: 'levels';
   info: {
@@ -1286,6 +1324,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-university.about-university': ApiAboutUniversityAboutUniversity;
       'api::departments.departments': ApiDepartmentsDepartments;
+      'api::electronicplatforms.electronicplatforms': ApiElectronicplatformsElectronicplatforms;
       'api::level.level': ApiLevelLevel;
       'api::navbar-list.navbar-list': ApiNavbarListNavbarList;
       'api::university-faculties.university-faculties': ApiUniversityFacultiesUniversityFaculties;
