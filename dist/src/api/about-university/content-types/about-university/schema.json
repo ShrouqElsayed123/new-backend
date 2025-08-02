@@ -15,7 +15,31 @@
         }
     },
     "attributes": {
-        "AboutUniversity": {
+        "AboutText": {
+            "type": "json",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "Buildings": {
+            "type": "json",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "Facilities": {
+            "type": "json",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
+        },
+        "Programs": {
             "type": "json",
             "pluginOptions": {
                 "i18n": {

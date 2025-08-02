@@ -427,7 +427,13 @@ export interface ApiAboutUniversityAboutUniversity
     };
   };
   attributes: {
-    AboutUniversity: Schema.Attribute.JSON &
+    AboutText: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Buildings: Schema.Attribute.JSON &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -436,11 +442,23 @@ export interface ApiAboutUniversityAboutUniversity
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Facilities: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::about-university.about-university'
     >;
+    Programs: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -809,6 +827,44 @@ export interface ApiUniversityInfoUniversityInfo
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiUniversityNewsUniversityNews
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'university_news1';
+  info: {
+    displayName: 'University News';
+    pluralName: 'university-news1';
+    singularName: 'university-news';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::university-news.university-news'
+    >;
+    news: Schema.Attribute.JSON &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1330,6 +1386,7 @@ declare module '@strapi/strapi' {
       'api::university-faculties.university-faculties': ApiUniversityFacultiesUniversityFaculties;
       'api::university-history.university-history': ApiUniversityHistoryUniversityHistory;
       'api::university-info.university-info': ApiUniversityInfoUniversityInfo;
+      'api::university-news.university-news': ApiUniversityNewsUniversityNews;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
