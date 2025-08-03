@@ -581,6 +581,35 @@ export interface ApiElectronicplatformsElectronicplatforms
   };
 }
 
+export interface ApiHomeContentHomeContent extends Struct.CollectionTypeSchema {
+  collectionName: 'home_contents';
+  info: {
+    displayName: 'HomeContent';
+    pluralName: 'home-contents';
+    singularName: 'home-content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-content.home-content'
+    > &
+      Schema.Attribute.Private;
+    News: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    Stats: Schema.Attribute.JSON;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLevelLevel extends Struct.CollectionTypeSchema {
   collectionName: 'levels';
   info: {
@@ -1381,6 +1410,7 @@ declare module '@strapi/strapi' {
       'api::about-university.about-university': ApiAboutUniversityAboutUniversity;
       'api::departments.departments': ApiDepartmentsDepartments;
       'api::electronicplatforms.electronicplatforms': ApiElectronicplatformsElectronicplatforms;
+      'api::home-content.home-content': ApiHomeContentHomeContent;
       'api::level.level': ApiLevelLevel;
       'api::navbar-list.navbar-list': ApiNavbarListNavbarList;
       'api::university-faculties.university-faculties': ApiUniversityFacultiesUniversityFaculties;

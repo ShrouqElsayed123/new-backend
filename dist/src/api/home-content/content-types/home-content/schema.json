@@ -1,0 +1,21 @@
+{
+    "kind": "collectionType",
+    "collectionName": "home_contents",
+    "info": {
+        "singularName": "home-content",
+        "pluralName": "home-contents",
+        "displayName": "HomeContent"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "Stats": {
+            "type": "json"
+        },
+        "News": {
+            "type": "json"
+        }
+    }
+}
