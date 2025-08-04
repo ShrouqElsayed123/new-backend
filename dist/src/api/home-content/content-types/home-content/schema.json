@@ -9,13 +9,29 @@
     "options": {
         "draftAndPublish": true
     },
-    "pluginOptions": {},
+    "pluginOptions": {
+        "i18n": {
+            "localized": true
+        }
+    },
     "attributes": {
-        "Stats": {
-            "type": "json"
+        "title": {
+            "type": "string",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "required": true,
+            "unique": true
         },
-        "News": {
-            "type": "json"
+        "content": {
+            "type": "json",
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            }
         }
     }
 }
